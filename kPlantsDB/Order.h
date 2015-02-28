@@ -1,11 +1,16 @@
+#include <QSharedDataPointer>
+
 namespace kPlantsDB
 {
   class Order
   {
   public:
-    Plantae kingdom() const;
+    Order(const QString& _entityId);
+    Order(const Order& _other);
+    Order& operator=(const Order& _other);
+    ~Order();
   private:
     struct Private;
-    Private* const d;
+    QSharedDataPointer<Private> d;
   };
 }
