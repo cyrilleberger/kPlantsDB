@@ -50,7 +50,7 @@ QList< Order > Plantae::orders() const
       QueryResult qr = d->connection->execute(aq);
       for(const QueryResult::Line& l : qr.lines())
       {
-        d->cached.append(Order(l["y"].toString()));
+        d->cached.append(Order(l["y"].toMap()["value"].toString(), d->connection));
       }
       if(qr.lines().size() != 1000)
       {

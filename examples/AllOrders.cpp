@@ -12,5 +12,9 @@ int main(int _argc, char** _argv)
   QCoreApplication app(_argc, _argv);
   kPlantsDB::DatabaseConnection connection;
   kPlantsDB::Plantae plantae(&connection);
-  qDebug() << plantae.orders().size();
+  for(const kPlantsDB::Order& order : plantae.orders())
+  {
+    qDebug() << order.name();
+  }
+  return 0;
 }
